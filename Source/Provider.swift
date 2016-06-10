@@ -38,6 +38,8 @@ public class Provider: NSObject {
     /// The redirect URL.
     public let redirectURL: NSURL
     
+    public var useWebView = false
+    
     /// The response type.
     private let responseType: ResponseType
     
@@ -159,6 +161,10 @@ public class Provider: NSObject {
     public func handleURL(URL: NSURL, sourceApplication: String?) {
         guard shouldHandleURL(URL, sourceApplication: sourceApplication) else { return }
         
+        handleURL(URL)
+    }
+    
+    internal func handleURL(URL: NSURL) {
         safariVC?.dismissViewControllerAnimated(true, completion: nil)
         NotificationCenter.removeObserver(self, name: UIApplicationDidBecomeActiveNotification)
         
@@ -209,6 +215,12 @@ private extension Provider {
 
 private extension Provider {
     func visit(URL URL: NSURL) {
+        if useWebView {
+            safariVC = WebViewController(URL: URL, delegate: self)
+            Application.presentViewController(safariVC!)
+            return
+        }
+        
         if #available(iOS 9.0, *) {
             safariVC = SFSafariViewController(URL: URL, delegate: self)
             Application.presentViewController(safariVC!)
@@ -250,9 +262,7 @@ private extension Provider {
     func shouldHandleURL(URL: NSURL, sourceApplication: String?) -> Bool {
         guard isLegitSourceApplication(sourceApplication) else { return false }
         
-        guard state == URL.queries["state"] else { return false }
-        
-        return matchingURLs(URL, redirectURL)
+        return shouldHandleURL(URL)
     }
     
     func isLegitSourceApplication(sourceApplication: String?) -> Bool {
@@ -263,6 +273,14 @@ private extension Provider {
     
     func matchingURLs(a: NSURL, _ b: NSURL) -> Bool {
         return (a.scheme, a.host, a.path) == (b.scheme, b.host, b.path)
+    }
+}
+
+internal extension Provider {
+    func shouldHandleURL(URL: NSURL) -> Bool {
+        guard state == URL.queries["state"] else { return false }
+        
+        return matchingURLs(URL, redirectURL)
     }
 }
 
@@ -297,6 +315,16 @@ private extension Provider {
 @available(iOS 9.0, *)
 extension Provider: SFSafariViewControllerDelegate {
     public func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        safariVC?.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let completion = completion {
+            Queue.main { completion(.Failure(.Cancel)) }
+        }
+    }
+}
+
+extension Provider: WebViewControllerDelegate {
+    func webViewControllerDidFinish(controller: WebViewController) {
         safariVC?.dismissViewControllerAnimated(true, completion: nil)
         
         if let completion = completion {
