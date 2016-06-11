@@ -25,9 +25,31 @@
 internal let Application = UIApplication.sharedApplication()
 internal let NotificationCenter = NSNotificationCenter.defaultCenter()
 
+// MARK: - Equatable
+
 internal func == <T: Equatable>(tuple1: (T?, T?, T?), tuple2: (T?, T?, T?)) -> Bool {
     return (tuple1.0 == tuple2.0) && (tuple1.1 == tuple2.1) && (tuple1.2 == tuple2.2)
 }
+
+// MARK: - URLStringConvertible
+
+public protocol URLStringConvertible {
+    var URLString: String { get }
+}
+
+extension String: URLStringConvertible {
+    public var URLString: String {
+        return self
+    }
+}
+
+extension NSURL: URLStringConvertible {
+    public var URLString: String {
+        return absoluteString
+    }
+}
+
+// MARK: - UIApplication
 
 extension UIApplication {
     private var topViewController: UIViewController? {
@@ -45,6 +67,8 @@ extension UIApplication {
     }
 }
 
+// MARK: - NSNotificationCenter
+
 internal extension NSNotificationCenter {
     func addObserver(observer: AnyObject, selector: Selector, name: String) {
         addObserver(observer, selector: selector, name: name, object: nil)
@@ -54,6 +78,8 @@ internal extension NSNotificationCenter {
         removeObserver(observer, name: name, object: nil)
     }
 }
+
+// MARK: - NSURL
 
 internal extension NSURL {
     var fragments: [String: String] {
@@ -96,11 +122,15 @@ internal extension NSURL {
     
 }
 
+// MARK: - Dictionary
+
 internal extension Dictionary {
     mutating func merge(other: Dictionary) {
         other.forEach { self[$0] = $1 }
     }
 }
+
+// MARK: - SFSafariViewController
 
 @available(iOS 9.0, *)
 internal extension SFSafariViewController {
@@ -109,6 +139,8 @@ internal extension SFSafariViewController {
         self.delegate = delegate
     }
 }
+
+// MARK: - Queue
 
 internal struct Queue {
     static func main(block: dispatch_block_t) {
