@@ -124,13 +124,13 @@ public class Provider: NSObject {
     }
     
     /**
-     Requests access to the OAuth application via user code.
+     Requests access to the OAuth application via device code.
      
-     - parameter userCode:   The user code to use for requesting the access to the OAuth application.
+     - parameter deviceCode:   The device code to use for requesting the access to the OAuth application.
      - parameter completion: The block to be executed when the authorization process ends.
      */
-    public func authorizeUserCode(userCode: String, completion: Result<Token, Error> -> Void) {
-        requestToken(GrantType.Device(userCode), completion: completion)
+    public func authorizeDeviceCode(deviceCode: String, completion: Result<Token, Error> -> Void) {
+        requestToken(GrantType.Device(deviceCode), completion: completion)
     }
     
     /**
@@ -220,13 +220,13 @@ private extension Provider {
         return params
     }
     
-    func tokenViaUserCodeRequestParams(userCode: String) -> [String: String] {
+    func tokenViaDeviceCodeRequestParams(deviceCode: String) -> [String: String] {
         var params = [
             "client_id": clientID,
             "client_secret": clientSecret!,
         ]
         
-        params.merge(GrantType.Device(userCode).params)
+        params.merge(GrantType.Device(deviceCode).params)
         params.merge(additionalTokenRequestParams)
         
         return params
@@ -313,8 +313,8 @@ private extension Provider {
         var params: [String : String]
         
         switch grantType {
-        case .Device(let userCode):
-            params = tokenViaUserCodeRequestParams(userCode)
+        case .Device(let deviceCode):
+            params = tokenViaDeviceCodeRequestParams(deviceCode)
         default:
             params = tokenRequestParams(grantType)
         }
