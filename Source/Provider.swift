@@ -124,6 +124,16 @@ public class Provider: NSObject {
     }
     
     /**
+     Requests access to the OAuth application via user code.
+     
+     - parameter userCode:   The user code to use for requesting the access to the OAuth application.
+     - parameter completion: The block to be executed when the authorization process ends.
+     */
+    public func authorizeUserCode(userCode: String, completion: Result<Token, Error> -> Void) {
+        requestToken(GrantType.Device(userCode), completion: completion)
+    }
+    
+    /**
      Refreshes the token.
      
      - parameter completion: The block to be executed when the refresh token process ends.
@@ -209,6 +219,18 @@ private extension Provider {
         
         return params
     }
+    
+    func tokenViaUserCodeRequestParams(userCode: String) -> [String: String] {
+        var params = [
+            "client_id": clientID,
+            "client_secret": clientSecret!,
+        ]
+        
+        params.merge(GrantType.Device(userCode).params)
+        params.merge(additionalTokenRequestParams)
+        
+        return params
+    }
 }
 
 // MARK: - Visit URL
@@ -288,7 +310,14 @@ internal extension Provider {
 
 private extension Provider {
     func requestToken(grantType: GrantType, completion: Result<Token, Error> -> Void) {
-        let params = tokenRequestParams(grantType)
+        var params: [String : String]
+        
+        switch grantType {
+        case .Device(let userCode):
+            params = tokenViaUserCodeRequestParams(userCode)
+        default:
+            params = tokenRequestParams(grantType)
+        }
         
         HTTP.POST(tokenURL!, parameters: params) { resultJSON in
             let result: Result<Token, Error>
