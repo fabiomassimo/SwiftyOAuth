@@ -53,6 +53,15 @@ public enum Error: ErrorType {
     /// The endpoint is temporarily unable to respond.
     case TemporarilyUnavailable(String)
     
+    /// The authorization process is pending user input.
+    case AuthorizationPending(String)
+    
+    /// The polling of the server to fetch authorization credentials is going too fast.
+    case AuthorizationRetryIntervalTooFast(String)
+    
+    /// The code used for the authorization flow is expired.
+    case CodeExpired(String)
+    
     /// The application responded with an error that doesn't match any enum cases.
     case Other(String, String)
     
@@ -87,6 +96,12 @@ public enum Error: ErrorType {
             self = .ServerError(description)
         case "temporarily_unavailable":
             self = .TemporarilyUnavailable(description)
+        case "authorization_pending":
+            self = .AuthorizationPending(description)
+        case "slow_down":
+            self = .AuthorizationRetryIntervalTooFast(description)
+        case "code_expired":
+            self = .CodeExpired(description)
         default:
             self = .Other(error, description)
         }
