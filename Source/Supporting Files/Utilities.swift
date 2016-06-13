@@ -22,7 +22,6 @@
 // SOFTWARE.
 //
 
-internal let Application = UIApplication.sharedApplication()
 internal let NotificationCenter = NSNotificationCenter.defaultCenter()
 
 // MARK: - Equatable
@@ -51,6 +50,9 @@ extension NSURL: URLStringConvertible {
 
 // MARK: - UIApplication
 
+#if os(iOS)
+internal let Application = UIApplication.sharedApplication()
+
 extension UIApplication {
     private var topViewController: UIViewController? {
         var vc = delegate?.window??.rootViewController
@@ -66,6 +68,7 @@ extension UIApplication {
         topViewController?.presentViewController(viewController, animated: animated, completion: completion)
     }
 }
+#endif
 
 // MARK: - NSNotificationCenter
 
@@ -132,6 +135,9 @@ internal extension Dictionary {
 
 // MARK: - SFSafariViewController
 
+#if os(iOS)
+import SafariServices;
+    
 @available(iOS 9.0, *)
 internal extension SFSafariViewController {
     convenience init(URL: NSURL, delegate: SFSafariViewControllerDelegate) {
@@ -139,6 +145,7 @@ internal extension SFSafariViewController {
         self.delegate = delegate
     }
 }
+#endif
 
 // MARK: - Queue
 

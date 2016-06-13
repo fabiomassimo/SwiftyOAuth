@@ -69,7 +69,9 @@ public class Provider: NSObject {
     /// The block to be executed when the authorization process ends.
     private var completion: (Result<Token, Error> -> Void)?
     
+    #if os(iOS)
     private var safariVC: UIViewController?
+    #endif
     
     /// The Token Store used to store the token.
     public var tokenStore: TokenStore = NSUserDefaults.standardUserDefaults()
@@ -113,17 +115,6 @@ public class Provider: NSObject {
     }
     
     /**
-     Requests access to the OAuth application.
-     
-     - parameter completion: The block to be executed when the authorization process ends.
-     */
-    public func authorize(completion: Result<Token, Error> -> Void) {
-        self.completion = completion
-        
-        visit(URL: authorizeURL.queries(authRequestParams))
-    }
-    
-    /**
      Requests access to the OAuth application via device code.
      
      - parameter deviceCode:   The device code to use for requesting the access to the OAuth application.
@@ -146,44 +137,6 @@ public class Provider: NSObject {
         }
         
         requestToken(.RefreshToken(refreshToken), completion: completion)
-    }
-    
-    /**
-     Handles the incoming URL.
-     
-     - parameter URL:     The incoming URL to handle.
-     - parameter options: A dictionary of launch options.
-     */
-    @available(iOS 9.0, *)
-    public func handleURL(URL: NSURL, options: [String: AnyObject]) {
-        let sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String
-        
-        handleURL(URL, sourceApplication: sourceApplication)
-    }
-    
-    /**
-     Handles the incoming URL.
-     
-     - parameter URL:               The incoming URL to handle.
-     - parameter sourceApplication: The source application.
-     */
-    @available(*, deprecated=9.0, message="Use handleURL:options: in application:openURL:options: instead.")
-    public func handleURL(URL: NSURL, sourceApplication: String?) {
-        guard shouldHandleURL(URL, sourceApplication: sourceApplication) else { return }
-        
-        handleURL(URL)
-    }
-    
-    internal func handleURL(URL: NSURL) {
-        safariVC?.dismissViewControllerAnimated(true, completion: nil)
-        NotificationCenter.removeObserver(self, name: UIApplicationDidBecomeActiveNotification)
-        
-        guard let completion = completion else { return }
-        
-        switch responseType {
-        case .Token: handleURLForTokenResponseType(URL, completion: completion)
-        case .Code: handleURLForCodeResponseType(URL, completion: completion)
-        }
     }
 }
 
@@ -230,26 +183,6 @@ private extension Provider {
         params.merge(additionalTokenRequestParams)
         
         return params
-    }
-}
-
-// MARK: - Visit URL
-
-private extension Provider {
-    func visit(URL URL: NSURL) {
-        if useWebView {
-            safariVC = WebViewController(URL: URL, delegate: self)
-            Application.presentViewController(safariVC!)
-            return
-        }
-        
-        if #available(iOS 9.0, *) {
-            safariVC = SFSafariViewController(URL: URL, delegate: self)
-            Application.presentViewController(safariVC!)
-        } else {
-            NotificationCenter.addObserver(self, selector: #selector(Provider.didBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification)
-            Application.openURL(URL)
-        }
     }
 }
 
@@ -341,6 +274,85 @@ private extension Provider {
 
 // MARK: - Close Browser Window
 
+#if os(iOS)
+import SafariServices;
+
+extension Provider {
+    /**
+     Requests access to the OAuth application.
+     
+     - parameter completion: The block to be executed when the authorization process ends.
+     */
+    public func authorize(completion: Result<Token, Error> -> Void) {
+        self.completion = completion
+        
+        visit(URL: authorizeURL.queries(authRequestParams))
+    }
+}
+    
+// MARK: - Visit URL
+
+private extension Provider {
+    func visit(URL URL: NSURL) {
+        if useWebView {
+            safariVC = WebViewController(URL: URL, delegate: self)
+            Application.presentViewController(safariVC!)
+            return
+        }
+        
+        if #available(iOS 9.0, *) {
+            safariVC = SFSafariViewController(URL: URL, delegate: self)
+            Application.presentViewController(safariVC!)
+        } else {
+            NotificationCenter.addObserver(self, selector: #selector(Provider.didBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification)
+            Application.openURL(URL)
+        }
+    }
+}
+    
+    
+extension Provider {
+    /**
+     Handles the incoming URL.
+     
+     - parameter URL:     The incoming URL to handle.
+     - parameter options: A dictionary of launch options.
+     */
+    @available(iOS 9.0, *)
+    public func handleURL(URL: NSURL, options: [String: AnyObject]) {
+        let sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String
+        
+        handleURL(URL, sourceApplication: sourceApplication)
+    }
+    
+    /**
+     Handles the incoming URL.
+     
+     - parameter URL:               The incoming URL to handle.
+     - parameter sourceApplication: The source application.
+     */
+    @available(*, deprecated=9.0, message="Use handleURL:options: in application:openURL:options: instead.")
+    public func handleURL(URL: NSURL, sourceApplication: String?) {
+        guard shouldHandleURL(URL, sourceApplication: sourceApplication) else { return }
+        
+        handleURL(URL)
+    }
+    
+    
+    
+    internal func handleURL(URL: NSURL) {
+        safariVC?.dismissViewControllerAnimated(true, completion: nil)
+        NotificationCenter.removeObserver(self, name: UIApplicationDidBecomeActiveNotification)
+        
+        guard let completion = completion else { return }
+        
+        switch responseType {
+        case .Token: handleURLForTokenResponseType(URL, completion: completion)
+        case .Code: handleURLForCodeResponseType(URL, completion: completion)
+        }
+    }
+}
+
 @available(iOS 9.0, *)
 extension Provider: SFSafariViewControllerDelegate {
     public func safariViewControllerDidFinish(controller: SFSafariViewController) {
@@ -371,3 +383,4 @@ extension Provider {
         }
     }
 }
+#endif

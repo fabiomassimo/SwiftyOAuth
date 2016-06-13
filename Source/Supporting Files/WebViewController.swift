@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 
+#if os(iOS)
 import WebKit
 
 extension WKWebView {
@@ -102,3 +103,4 @@ extension ViewController: WKNavigationDelegate {
         delegate.handleURL(URL)
     }
 }
+#endif

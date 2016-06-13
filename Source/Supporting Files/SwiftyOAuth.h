@@ -23,7 +23,6 @@
 //
 
 @import UIKit;
-@import SafariServices;
 
 FOUNDATION_EXPORT double SwiftyOAuthVersionNumber;
 FOUNDATION_EXPORT const unsigned char SwiftyOAuthVersionString[];
