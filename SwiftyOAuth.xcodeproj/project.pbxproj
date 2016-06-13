@@ -70,6 +70,46 @@
 		E5B6FEF51D0EDE8E00B9641D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1BAFF61CE308370012431F /* Error.swift */; };
 		E5B6FEF61D0EDE8E00B9641D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF871CD539780099C320 /* Provider.swift */; };
 		E5B6FEF71D0EDE8E00B9641D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF901CD53F6E0099C320 /* Token.swift */; };
+		E5B6FF041D0EE4BF00B9641D /* Basecamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C531D046E8F0096C7C9 /* Basecamp.swift */; };
+		E5B6FF051D0EE4BF00B9641D /* Dribbble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48CF21CE1351700FB2DC9 /* Dribbble.swift */; };
+		E5B6FF061D0EE4BF00B9641D /* Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C511D046D4E0096C7C9 /* Dropbox.swift */; };
+		E5B6FF071D0EE4BF00B9641D /* Feedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351261CF5F3F9001BEF41 /* Feedly.swift */; };
+		E5B6FF081D0EE4BF00B9641D /* Foursquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D67A8771D01790600492D83 /* Foursquare.swift */; };
+		E5B6FF091D0EE4BF00B9641D /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48CF01CE1350C00FB2DC9 /* GitHub.swift */; };
+		E5B6FF0A1D0EE4BF00B9641D /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C5B1D0471990096C7C9 /* Google.swift */; };
+		E5B6FF0B1D0EE4BF00B9641D /* Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEEA0AC1CE618C000951F94 /* Instagram.swift */; };
+		E5B6FF0C1D0EE4BF00B9641D /* Medium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351351CFB7097001BEF41 /* Medium.swift */; };
+		E5B6FF0D1D0EE4BF00B9641D /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C571D046FD10096C7C9 /* Meetup.swift */; };
+		E5B6FF0E1D0EE4BF00B9641D /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4B1D0469A60096C7C9 /* Reddit.swift */; };
+		E5B6FF0F1D0EE4BF00B9641D /* Slack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4F1D046C9F0096C7C9 /* Slack.swift */; };
+		E5B6FF101D0EE4BF00B9641D /* SoundCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351311CF894E7001BEF41 /* SoundCloud.swift */; };
+		E5B6FF111D0EE4BF00B9641D /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C551D046F5F0096C7C9 /* Spotify.swift */; };
+		E5B6FF121D0EE4BF00B9641D /* StackExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351331CF89660001BEF41 /* StackExchange.swift */; };
+		E5B6FF131D0EE4BF00B9641D /* Strava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C591D0470940096C7C9 /* Strava.swift */; };
+		E5B6FF141D0EE4BF00B9641D /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C491D0469230096C7C9 /* Stripe.swift */; };
+		E5B6FF151D0EE4BF00B9641D /* Uber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D444D4A1CF49E2900709148 /* Uber.swift */; };
+		E5B6FF161D0EE4BF00B9641D /* Vimeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512F1CF893E0001BEF41 /* Vimeo.swift */; };
+		E5B6FF171D0EE4BF00B9641D /* Weibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4D1D046B620096C7C9 /* Weibo.swift */; };
+		E5B6FF181D0EE4C000B9641D /* Basecamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C531D046E8F0096C7C9 /* Basecamp.swift */; };
+		E5B6FF191D0EE4C000B9641D /* Dribbble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48CF21CE1351700FB2DC9 /* Dribbble.swift */; };
+		E5B6FF1A1D0EE4C000B9641D /* Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C511D046D4E0096C7C9 /* Dropbox.swift */; };
+		E5B6FF1B1D0EE4C000B9641D /* Feedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351261CF5F3F9001BEF41 /* Feedly.swift */; };
+		E5B6FF1C1D0EE4C000B9641D /* Foursquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D67A8771D01790600492D83 /* Foursquare.swift */; };
+		E5B6FF1D1D0EE4C000B9641D /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48CF01CE1350C00FB2DC9 /* GitHub.swift */; };
+		E5B6FF1E1D0EE4C000B9641D /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C5B1D0471990096C7C9 /* Google.swift */; };
+		E5B6FF1F1D0EE4C000B9641D /* Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEEA0AC1CE618C000951F94 /* Instagram.swift */; };
+		E5B6FF201D0EE4C000B9641D /* Medium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351351CFB7097001BEF41 /* Medium.swift */; };
+		E5B6FF211D0EE4C000B9641D /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C571D046FD10096C7C9 /* Meetup.swift */; };
+		E5B6FF221D0EE4C000B9641D /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4B1D0469A60096C7C9 /* Reddit.swift */; };
+		E5B6FF231D0EE4C000B9641D /* Slack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4F1D046C9F0096C7C9 /* Slack.swift */; };
+		E5B6FF241D0EE4C000B9641D /* SoundCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351311CF894E7001BEF41 /* SoundCloud.swift */; };
+		E5B6FF251D0EE4C000B9641D /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C551D046F5F0096C7C9 /* Spotify.swift */; };
+		E5B6FF261D0EE4C000B9641D /* StackExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351331CF89660001BEF41 /* StackExchange.swift */; };
+		E5B6FF271D0EE4C000B9641D /* Strava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C591D0470940096C7C9 /* Strava.swift */; };
+		E5B6FF281D0EE4C000B9641D /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C491D0469230096C7C9 /* Stripe.swift */; };
+		E5B6FF291D0EE4C000B9641D /* Uber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D444D4A1CF49E2900709148 /* Uber.swift */; };
+		E5B6FF2A1D0EE4C000B9641D /* Vimeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512F1CF893E0001BEF41 /* Vimeo.swift */; };
+		E5B6FF2B1D0EE4C000B9641D /* Weibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3C4D1D046B620096C7C9 /* Weibo.swift */; };
 		E5BE044F1D0A01E1004C5969 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE044E1D0A01E1004C5969 /* TokenStore.swift */; };
 		E5BE04521D0A0397004C5969 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04511D0A0397004C5969 /* UserDefaults.swift */; };
 		E5BE04541D0A0659004C5969 /* UbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04531D0A0659004C5969 /* UbiquitousKeyValueStore.swift */; };
@@ -521,15 +561,35 @@
 				E5B6FEF31D0EDE8E00B9641D /* UbiquitousKeyValueStore.swift in Sources */,
 				E5B6FEF01D0EDE8E00B9641D /* Utilities.swift in Sources */,
 				E5B6FEF21D0EDE8E00B9641D /* TokenStore.swift in Sources */,
+				E5B6FF111D0EE4BF00B9641D /* Spotify.swift in Sources */,
 				E5B6FEF51D0EDE8E00B9641D /* Error.swift in Sources */,
+				E5B6FF0B1D0EE4BF00B9641D /* Instagram.swift in Sources */,
+				E5B6FF161D0EE4BF00B9641D /* Vimeo.swift in Sources */,
+				E5B6FF0A1D0EE4BF00B9641D /* Google.swift in Sources */,
 				E5B6FEF61D0EDE8E00B9641D /* Provider.swift in Sources */,
+				E5B6FF101D0EE4BF00B9641D /* SoundCloud.swift in Sources */,
+				E5B6FF0D1D0EE4BF00B9641D /* Meetup.swift in Sources */,
 				E5B6FEED1D0EDE8E00B9641D /* TokenType.swift in Sources */,
+				E5B6FF0C1D0EE4BF00B9641D /* Medium.swift in Sources */,
+				E5B6FF091D0EE4BF00B9641D /* GitHub.swift in Sources */,
+				E5B6FF171D0EE4BF00B9641D /* Weibo.swift in Sources */,
+				E5B6FF061D0EE4BF00B9641D /* Dropbox.swift in Sources */,
+				E5B6FF0F1D0EE4BF00B9641D /* Slack.swift in Sources */,
+				E5B6FF121D0EE4BF00B9641D /* StackExchange.swift in Sources */,
 				E5B6FEEF1D0EDE8E00B9641D /* Result.swift in Sources */,
 				E5B6FEEE1D0EDE8E00B9641D /* HTTP.swift in Sources */,
 				E5B6FEF41D0EDE8E00B9641D /* UserDefaults.swift in Sources */,
+				E5B6FF081D0EE4BF00B9641D /* Foursquare.swift in Sources */,
+				E5B6FF151D0EE4BF00B9641D /* Uber.swift in Sources */,
+				E5B6FF041D0EE4BF00B9641D /* Basecamp.swift in Sources */,
 				E5B6FEF11D0EDE8E00B9641D /* WebViewController.swift in Sources */,
 				E5B6FEEC1D0EDE8E00B9641D /* ResponseType.swift in Sources */,
+				E5B6FF0E1D0EE4BF00B9641D /* Reddit.swift in Sources */,
+				E5B6FF051D0EE4BF00B9641D /* Dribbble.swift in Sources */,
+				E5B6FF071D0EE4BF00B9641D /* Feedly.swift in Sources */,
+				E5B6FF141D0EE4BF00B9641D /* Stripe.swift in Sources */,
 				E5B6FEF71D0EDE8E00B9641D /* Token.swift in Sources */,
+				E5B6FF131D0EE4BF00B9641D /* Strava.swift in Sources */,
 				E5B6FEEB1D0EDE8E00B9641D /* GrantType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,15 +601,35 @@
 				E5B6FEE61D0EDE8D00B9641D /* UbiquitousKeyValueStore.swift in Sources */,
 				E5B6FEE31D0EDE8D00B9641D /* Utilities.swift in Sources */,
 				E5B6FEE51D0EDE8D00B9641D /* TokenStore.swift in Sources */,
+				E5B6FF251D0EE4C000B9641D /* Spotify.swift in Sources */,
 				E5B6FEE81D0EDE8D00B9641D /* Error.swift in Sources */,
+				E5B6FF1F1D0EE4C000B9641D /* Instagram.swift in Sources */,
+				E5B6FF2A1D0EE4C000B9641D /* Vimeo.swift in Sources */,
+				E5B6FF1E1D0EE4C000B9641D /* Google.swift in Sources */,
 				E5B6FEE91D0EDE8D00B9641D /* Provider.swift in Sources */,
+				E5B6FF241D0EE4C000B9641D /* SoundCloud.swift in Sources */,
+				E5B6FF211D0EE4C000B9641D /* Meetup.swift in Sources */,
 				E5B6FEE01D0EDE8D00B9641D /* TokenType.swift in Sources */,
+				E5B6FF201D0EE4C000B9641D /* Medium.swift in Sources */,
+				E5B6FF1D1D0EE4C000B9641D /* GitHub.swift in Sources */,
+				E5B6FF2B1D0EE4C000B9641D /* Weibo.swift in Sources */,
+				E5B6FF1A1D0EE4C000B9641D /* Dropbox.swift in Sources */,
+				E5B6FF231D0EE4C000B9641D /* Slack.swift in Sources */,
+				E5B6FF261D0EE4C000B9641D /* StackExchange.swift in Sources */,
 				E5B6FEE21D0EDE8D00B9641D /* Result.swift in Sources */,
 				E5B6FEE11D0EDE8D00B9641D /* HTTP.swift in Sources */,
 				E5B6FEE71D0EDE8D00B9641D /* UserDefaults.swift in Sources */,
+				E5B6FF1C1D0EE4C000B9641D /* Foursquare.swift in Sources */,
+				E5B6FF291D0EE4C000B9641D /* Uber.swift in Sources */,
+				E5B6FF181D0EE4C000B9641D /* Basecamp.swift in Sources */,
 				E5B6FEE41D0EDE8D00B9641D /* WebViewController.swift in Sources */,
 				E5B6FEDF1D0EDE8D00B9641D /* ResponseType.swift in Sources */,
+				E5B6FF221D0EE4C000B9641D /* Reddit.swift in Sources */,
+				E5B6FF191D0EE4C000B9641D /* Dribbble.swift in Sources */,
+				E5B6FF1B1D0EE4C000B9641D /* Feedly.swift in Sources */,
+				E5B6FF281D0EE4C000B9641D /* Stripe.swift in Sources */,
 				E5B6FEEA1D0EDE8D00B9641D /* Token.swift in Sources */,
+				E5B6FF271D0EE4C000B9641D /* Strava.swift in Sources */,
 				E5B6FEDE1D0EDE8D00B9641D /* GrantType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
