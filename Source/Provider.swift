@@ -25,15 +25,21 @@
 public class Provider: NSObject {
     /// The client ID.
     public let clientID: String
+    
     /// The client secret.
     public let clientSecret: String?
     
     /// The authorize URL.
     public let authorizeURL: NSURL
+    
     /// The token URL.
     public let tokenURL: NSURL?
+    
     /// The redirect URL.
     public let redirectURL: NSURL
+    
+    /// Whether the in-app browser is a WKWebView
+    public var useWebView = false
     
     /// The response type.
     private let responseType: ResponseType
@@ -57,12 +63,14 @@ public class Provider: NSObject {
     
     /// The additional parameters for the authorization request.
     public var additionalAuthRequestParams: [String: String] = [:]
+    
     /// The additional parameters for the token request.
     public var additionalTokenRequestParams: [String: String] = [:]
     
     /// The block to be executed when the authorization process ends.
     private var completion: (Result<Token, Error> -> Void)?
     
+    /// The in-app browser.
     private var safariVC: UIViewController?
     
     /// The Token Store used to store the token.
@@ -138,9 +146,27 @@ public class Provider: NSObject {
      - parameter URL:     The incoming URL to handle.
      - parameter options: A dictionary of launch options.
      */
+    @available(iOS 9.0, *)
     public func handleURL(URL: NSURL, options: [String: AnyObject]) {
-        guard shouldHandleURL(URL, options: options) else { return }
+        let sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String
         
+        handleURL(URL, sourceApplication: sourceApplication)
+    }
+    
+    /**
+     Handles the incoming URL.
+     
+     - parameter URL:               The incoming URL to handle.
+     - parameter sourceApplication: The source application.
+     */
+    @available(*, deprecated=9.0, message="Use handleURL:options: in application:openURL:options: instead.")
+    public func handleURL(URL: NSURL, sourceApplication: String?) {
+        guard shouldHandleURL(URL, sourceApplication: sourceApplication) else { return }
+        
+        handleURL(URL)
+    }
+    
+    internal func handleURL(URL: NSURL) {
         safariVC?.dismissViewControllerAnimated(true, completion: nil)
         NotificationCenter.removeObserver(self, name: UIApplicationDidBecomeActiveNotification)
         
@@ -191,6 +217,12 @@ private extension Provider {
 
 private extension Provider {
     func visit(URL URL: NSURL) {
+        if useWebView {
+            safariVC = WebViewController(URL: URL, delegate: self)
+            Application.presentViewController(safariVC!)
+            return
+        }
+        
         if #available(iOS 9.0, *) {
             safariVC = SFSafariViewController(URL: URL, delegate: self)
             Application.presentViewController(safariVC!)
@@ -229,28 +261,28 @@ private extension Provider {
         requestToken(.AuthorizationCode(code), completion: completion)
     }
     
-    func shouldHandleURL(URL: NSURL, options: [String: AnyObject]) -> Bool {
-        guard isLegitSourceApplication(options) else {
-            return false
-        }
+    func shouldHandleURL(URL: NSURL, sourceApplication: String?) -> Bool {
+        guard isLegitSourceApplication(sourceApplication) else { return false }
         
-        guard state == URL.queries["state"] else {
-            return false
-        }
-        
-        return matchingURLs(URL, redirectURL) ? true : false
+        return shouldHandleURL(URL)
     }
     
-    func isLegitSourceApplication(options: [String: AnyObject]) -> Bool {
-        guard let sourceApplication = options["UIApplicationOpenURLOptionsSourceApplicationKey"] as? String else {
-            return false
-        }
+    func isLegitSourceApplication(sourceApplication: String?) -> Bool {
+        guard let sourceApplication = sourceApplication else { return false }
         
         return ["com.apple.mobilesafari", "com.apple.SafariViewService"].contains(sourceApplication)
     }
     
     func matchingURLs(a: NSURL, _ b: NSURL) -> Bool {
         return (a.scheme, a.host, a.path) == (b.scheme, b.host, b.path)
+    }
+}
+
+internal extension Provider {
+    func shouldHandleURL(URL: NSURL) -> Bool {
+        guard state == URL.queries["state"] else { return false }
+        
+        return matchingURLs(URL, redirectURL)
     }
 }
 
@@ -285,6 +317,16 @@ private extension Provider {
 @available(iOS 9.0, *)
 extension Provider: SFSafariViewControllerDelegate {
     public func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        safariVC?.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let completion = completion {
+            Queue.main { completion(.Failure(.Cancel)) }
+        }
+    }
+}
+
+extension Provider: WebViewControllerDelegate {
+    func webViewControllerDidFinish(controller: WebViewController) {
         safariVC?.dismissViewControllerAnimated(true, completion: nil)
         
         if let completion = completion {
