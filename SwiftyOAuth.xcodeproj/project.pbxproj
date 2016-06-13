@@ -44,6 +44,32 @@
 		6DF7DF961CD547C30099C320 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF951CD547C30099C320 /* Utilities.swift */; };
 		E5B6FEC11D0ED99600B9641D /* SwiftyOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF7DF701CD5393E0099C320 /* SwiftyOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5B6FEC21D0ED99700B9641D /* SwiftyOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF7DF701CD5393E0099C320 /* SwiftyOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5B6FEDE1D0EDE8D00B9641D /* GrantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512C1CF73890001BEF41 /* GrantType.swift */; };
+		E5B6FEDF1D0EDE8D00B9641D /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512A1CF73885001BEF41 /* ResponseType.swift */; };
+		E5B6FEE01D0EDE8D00B9641D /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351281CF73876001BEF41 /* TokenType.swift */; };
+		E5B6FEE11D0EDE8D00B9641D /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48D191CE21FB500FB2DC9 /* HTTP.swift */; };
+		E5B6FEE21D0EDE8D00B9641D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF8E1CD53F300099C320 /* Result.swift */; };
+		E5B6FEE31D0EDE8D00B9641D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF951CD547C30099C320 /* Utilities.swift */; };
+		E5B6FEE41D0EDE8D00B9641D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DACDED21D04CA9400E58C0B /* WebViewController.swift */; };
+		E5B6FEE51D0EDE8D00B9641D /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE044E1D0A01E1004C5969 /* TokenStore.swift */; };
+		E5B6FEE61D0EDE8D00B9641D /* UbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04531D0A0659004C5969 /* UbiquitousKeyValueStore.swift */; };
+		E5B6FEE71D0EDE8D00B9641D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04511D0A0397004C5969 /* UserDefaults.swift */; };
+		E5B6FEE81D0EDE8D00B9641D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1BAFF61CE308370012431F /* Error.swift */; };
+		E5B6FEE91D0EDE8D00B9641D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF871CD539780099C320 /* Provider.swift */; };
+		E5B6FEEA1D0EDE8D00B9641D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF901CD53F6E0099C320 /* Token.swift */; };
+		E5B6FEEB1D0EDE8E00B9641D /* GrantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512C1CF73890001BEF41 /* GrantType.swift */; };
+		E5B6FEEC1D0EDE8E00B9641D /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D53512A1CF73885001BEF41 /* ResponseType.swift */; };
+		E5B6FEED1D0EDE8E00B9641D /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5351281CF73876001BEF41 /* TokenType.swift */; };
+		E5B6FEEE1D0EDE8E00B9641D /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE48D191CE21FB500FB2DC9 /* HTTP.swift */; };
+		E5B6FEEF1D0EDE8E00B9641D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF8E1CD53F300099C320 /* Result.swift */; };
+		E5B6FEF01D0EDE8E00B9641D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF951CD547C30099C320 /* Utilities.swift */; };
+		E5B6FEF11D0EDE8E00B9641D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DACDED21D04CA9400E58C0B /* WebViewController.swift */; };
+		E5B6FEF21D0EDE8E00B9641D /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE044E1D0A01E1004C5969 /* TokenStore.swift */; };
+		E5B6FEF31D0EDE8E00B9641D /* UbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04531D0A0659004C5969 /* UbiquitousKeyValueStore.swift */; };
+		E5B6FEF41D0EDE8E00B9641D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04511D0A0397004C5969 /* UserDefaults.swift */; };
+		E5B6FEF51D0EDE8E00B9641D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1BAFF61CE308370012431F /* Error.swift */; };
+		E5B6FEF61D0EDE8E00B9641D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF871CD539780099C320 /* Provider.swift */; };
+		E5B6FEF71D0EDE8E00B9641D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DF901CD53F6E0099C320 /* Token.swift */; };
 		E5BE044F1D0A01E1004C5969 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE044E1D0A01E1004C5969 /* TokenStore.swift */; };
 		E5BE04521D0A0397004C5969 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04511D0A0397004C5969 /* UserDefaults.swift */; };
 		E5BE04541D0A0659004C5969 /* UbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE04531D0A0659004C5969 /* UbiquitousKeyValueStore.swift */; };
@@ -492,6 +518,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B6FEF31D0EDE8E00B9641D /* UbiquitousKeyValueStore.swift in Sources */,
+				E5B6FEF01D0EDE8E00B9641D /* Utilities.swift in Sources */,
+				E5B6FEF21D0EDE8E00B9641D /* TokenStore.swift in Sources */,
+				E5B6FEF51D0EDE8E00B9641D /* Error.swift in Sources */,
+				E5B6FEF61D0EDE8E00B9641D /* Provider.swift in Sources */,
+				E5B6FEED1D0EDE8E00B9641D /* TokenType.swift in Sources */,
+				E5B6FEEF1D0EDE8E00B9641D /* Result.swift in Sources */,
+				E5B6FEEE1D0EDE8E00B9641D /* HTTP.swift in Sources */,
+				E5B6FEF41D0EDE8E00B9641D /* UserDefaults.swift in Sources */,
+				E5B6FEF11D0EDE8E00B9641D /* WebViewController.swift in Sources */,
+				E5B6FEEC1D0EDE8E00B9641D /* ResponseType.swift in Sources */,
+				E5B6FEF71D0EDE8E00B9641D /* Token.swift in Sources */,
+				E5B6FEEB1D0EDE8E00B9641D /* GrantType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +538,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B6FEE61D0EDE8D00B9641D /* UbiquitousKeyValueStore.swift in Sources */,
+				E5B6FEE31D0EDE8D00B9641D /* Utilities.swift in Sources */,
+				E5B6FEE51D0EDE8D00B9641D /* TokenStore.swift in Sources */,
+				E5B6FEE81D0EDE8D00B9641D /* Error.swift in Sources */,
+				E5B6FEE91D0EDE8D00B9641D /* Provider.swift in Sources */,
+				E5B6FEE01D0EDE8D00B9641D /* TokenType.swift in Sources */,
+				E5B6FEE21D0EDE8D00B9641D /* Result.swift in Sources */,
+				E5B6FEE11D0EDE8D00B9641D /* HTTP.swift in Sources */,
+				E5B6FEE71D0EDE8D00B9641D /* UserDefaults.swift in Sources */,
+				E5B6FEE41D0EDE8D00B9641D /* WebViewController.swift in Sources */,
+				E5B6FEDF1D0EDE8D00B9641D /* ResponseType.swift in Sources */,
+				E5B6FEEA1D0EDE8D00B9641D /* Token.swift in Sources */,
+				E5B6FEDE1D0EDE8D00B9641D /* GrantType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
