@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E5B6FEA91D0ED75800B9641D"
-               BuildableName = "SwiftyOAuth watchOS.framework"
+               BuildableName = "SwiftyOAuth.framework"
                BlueprintName = "SwiftyOAuth watchOS"
                ReferencedContainer = "container:SwiftyOAuth.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5B6FEA91D0ED75800B9641D"
-            BuildableName = "SwiftyOAuth watchOS.framework"
+            BuildableName = "SwiftyOAuth.framework"
             BlueprintName = "SwiftyOAuth watchOS"
             ReferencedContainer = "container:SwiftyOAuth.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5B6FEA91D0ED75800B9641D"
-            BuildableName = "SwiftyOAuth watchOS.framework"
+            BuildableName = "SwiftyOAuth.framework"
             BlueprintName = "SwiftyOAuth watchOS"
             ReferencedContainer = "container:SwiftyOAuth.xcodeproj">
          </BuildableReference>
